@@ -47,7 +47,7 @@ Rscript getSimpsonsDiversityIndex.R
 
 ### Taxonomy-Walking Plots
 
-1. To generate a taxonomy-level-specific version of the genus counts...
+1. Generate a taxonomy-level-specific version of the genus counts
 
 On Assembler2 (required for database access) run the following
 
@@ -61,7 +61,7 @@ outputs:
    note: some taxonomy IDs in the index will be duplicated, because counts are still specified at genus-level
 
 
-2. To generate taxonomy-level-specific stacked barchart:
+2. Generate taxonomy-level-specific stacked barchart
 
 ```
 python PhyloPlot.py merged_genusrpmphylum.csv 
