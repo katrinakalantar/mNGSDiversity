@@ -70,6 +70,6 @@ python PhyloPlot.py merged_genusrpmphylum.csv
 outputs:
 TaxonomyPlot.pdf - PDF file containing the taxonomy-specific (by input file) stacked bar chart
 
-
+[![Snip20171101_6.jpg](https://s26.postimg.org/h982tz2x5/Snip20171101_6.jpg)](https://postimg.org/image/452ihaav9/)
 
 
