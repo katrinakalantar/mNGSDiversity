@@ -2,6 +2,8 @@
 
 This base folder contains bare-bones scripts for mNGS diversity analysis.
 
+### Basic Analysis of Microbial Diversity
+
 1. Download the scripts in this repo to your local working directory.
 2. Create a file "background_models.txt" containing one integer ID per line 
 
@@ -42,6 +44,31 @@ python3 create_merged_genus_rpm_v2.py --genus
 Rscript getSimpsonsDiversityIndex.R
 ```
 
+
+### Taxonomy-Walking Plots
+
+1. To generate a taxonomy-level-specific version of the genus counts...
+
+On Assembler2 (required for database access) run the following
+
+```
+python PhyloWalk.py merged_genusrpm.tsv phylum
+```
+
+outputs:
+1. phyloMap.csv - matrix of taxonomy level x genus ID, showing the associated taxonomy levels for each genus in the merged_genusrpm file
+2. merged_genusrpm[taxonomylevel].csv - taxonomy-level ID (corresponding to the input parameter, ie. phylum in example above) x sample ID
+   note: some taxonomy IDs in the index will be duplicated, because counts are still specified at genus-level
+
+
+2. To generate taxonomy-level-specific stacked barchart:
+
+```
+python PhyloPlot.py merged_genusrpmphylum.csv 
+```
+
+outputs:
+TaxonomyPlot.pdf - PDF file containing the taxonomy-specific (by input file) stacked bar chart
 
 
 
