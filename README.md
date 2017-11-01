@@ -56,8 +56,8 @@ python PhyloWalk.py merged_genusrpm.tsv phylum
 ```
 
 outputs:
-1. phyloMap.csv - matrix of taxonomy level x genus ID, showing the associated taxonomy levels for each genus in the merged_genusrpm file
-2. merged_genusrpm[taxonomylevel].csv - taxonomy-level ID (corresponding to the input parameter, ie. phylum in example above) x sample ID
+**phyloMap.csv** - matrix of taxonomy level x genus ID, showing the associated taxonomy levels for each genus in the merged_genusrpm file
+**merged_genusrpm[taxonomylevel].csv** - taxonomy-level ID (corresponding to the input parameter, ie. phylum in example above) x sample ID
    note: some taxonomy IDs in the index will be duplicated, because counts are still specified at genus-level
 
 
@@ -68,7 +68,7 @@ python PhyloPlot.py merged_genusrpmphylum.csv
 ```
 
 outputs:
-TaxonomyPlot.pdf - PDF file containing the taxonomy-specific (by input file) stacked bar chart
+**TaxonomyPlot.pdf** - PDF file containing the taxonomy-specific (by input file) stacked bar chart
 
 [![Snip20171101_6.png](https://s26.postimg.org/lwe4vqqa1/Snip20171101_6.png)](https://postimg.org/image/u1w6tweit/)
 
