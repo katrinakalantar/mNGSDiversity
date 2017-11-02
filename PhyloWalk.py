@@ -8,13 +8,15 @@ import sys
 
 # inputs:
 # filename - genus-level merged counts file
+# taxonomy level to return counts at (lowercase)
+# mysql user password
 
 # read input file to pandas dataframe
 DF = pd.read_csv(sys.argv[1],sep='\t',index_col=0) 
 
 # Make database connections
-tsdb = MySQLdb.connect(host='localhost',user='mysql_user',passwd='balamuthia',db='taxa_scoring')
-ncbi_db = MySQLdb.connect(host='localhost',user='mysql_user',passwd='balamuthia',db='NCBI_Taxonomy')
+tsdb = MySQLdb.connect(host='localhost',user='mysql_user',passwd=sys.argv[3],db='taxa_scoring')
+ncbi_db = MySQLdb.connect(host='localhost',user='mysql_user',passwd=sys.argv[3],db='NCBI_Taxonomy')
 
 
 full_map = {}
@@ -26,12 +28,10 @@ for i in DF.index:
 	# get path levels to root - specify genus/family/phylum levels
 	path2root = 'call path_to_root_node(' + genus + ')'
 	p2r = pd.read_sql(path2root,ncbi_db)['@path_to_root'][0].split(';')
-	#print(p2r)
 
 	# get path taxonomy IDs to root - specify integer phylogeny IDs
 	Vpath2root = 'call vedas_path_to_root_node(' + genus + ')'
 	Vp2r = pd.read_sql(Vpath2root,ncbi_db)['@path_to_root'][0].split(';')
-	#print(Vp2r)
 
 	names2root = []
 	for j in Vp2r:
@@ -41,7 +41,7 @@ for i in DF.index:
 
 	#print(names2root)
 	# zip the levels with the taxonomy IDs 
-	dictionary = dict(zip(p2r,names2root))#Vp2r))
+	dictionary = dict(zip(p2r,names2root))
 	print(dictionary)
 
 	try:

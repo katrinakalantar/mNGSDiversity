@@ -7,6 +7,8 @@ This base folder contains bare-bones scripts for mNGS diversity analysis.
 1. Download the scripts in this repo to your local working directory.
 2. Create a file "background_models.txt" containing one integer ID per line 
 
+note: you can run with multiple different background models at once by adding multiple lines with integers, but for final analysis BM 4 (all NID + H2O) has been most effective.
+
 ```
 4
 
@@ -52,13 +54,16 @@ Rscript getSimpsonsDiversityIndex.R
 On Assembler2 (required for database access) run the following
 
 ```
-python PhyloWalk.py merged_genusrpm.tsv phylum
+python PhyloWalk.py merged_genusrpm.tsv phylum mysql_password
 ```
 
 outputs:
+
 **phyloMap.csv** - matrix of taxonomy level x genus ID, showing the associated taxonomy levels for each genus in the merged_genusrpm file
+
 **merged_genusrpm[taxonomylevel].csv** - taxonomy-level ID (corresponding to the input parameter, ie. phylum in example above) x sample ID
    note: some taxonomy IDs in the index will be duplicated, because counts are still specified at genus-level
+
 
 
 2. Generate taxonomy-level-specific stacked barchart
@@ -68,6 +73,7 @@ python PhyloPlot.py merged_genusrpmphylum.csv
 ```
 
 outputs:
+
 **TaxonomyPlot.pdf** - PDF file containing the taxonomy-specific (by input file) stacked bar chart
 
 [![Snip20171101_6.png](https://s26.postimg.org/lwe4vqqa1/Snip20171101_6.png)](https://postimg.org/image/u1w6tweit/)
